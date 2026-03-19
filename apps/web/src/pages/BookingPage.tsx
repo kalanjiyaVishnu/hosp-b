@@ -121,11 +121,31 @@ const BookingPage = () => {
                <CardDescription className="text-slate-400 uppercase tracking-widest font-bold text-xs">For {format(selectedDate, 'PPP')}</CardDescription>
             </CardHeader>
             <CardContent className="p-10 flex flex-col items-center">
-              {loadingSlots ? <div className="p-20 text-slate-400 italic">Reading clinic schedules...</div> : (
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full">
-                  {slots?.map((s: any) => (
-                    <button key={s.time} disabled={!s.available} onClick={() => setSelectedSlot(s.time)} className={`p-4 text-xs font-black tracking-widest border-2 rounded-xl transition-all ${selectedSlot === s.time ? 'bg-primary text-white border-primary shadow-xl -translate-y-1' : s.available ? 'bg-white hover:border-primary text-slate-800' : 'bg-slate-50 text-slate-300 cursor-not-allowed opacity-50 border-slate-100'}`}>{s.time}</button>
-                  ))}
+              {loadingSlots ? (
+                <div className="p-20 text-slate-400 italic">Reading clinic schedules...</div>
+              ) : slots === undefined ? (
+                <div className="p-16 text-center space-y-4 bg-red-50 rounded-3xl border border-dashed border-red-100">
+                   <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto shadow-sm italic font-serif text-2xl">!</div>
+                   <div className="space-y-1">
+                      <p className="font-bold text-red-800 italic">Schedule sync failed.</p>
+                      <p className="text-xs text-red-500 font-medium tracking-tight">Please ensure the specialist and date are correctly identified. Try refreshing the page.</p>
+                   </div>
+                </div>
+              ) : slots && slots.length > 0 ? (
+                <div className="w-full">
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    {slots.map((s: any) => (
+                      <button key={s.time} disabled={!s.available} onClick={() => setSelectedSlot(s.time)} className={`p-4 text-xs font-black tracking-widest border-2 rounded-xl transition-all ${selectedSlot === s.time ? 'bg-primary text-white border-primary shadow-xl -translate-y-1' : s.available ? 'bg-white hover:border-primary text-slate-800' : 'bg-slate-50 text-slate-300 cursor-not-allowed opacity-50 border-slate-100'}`}>{s.time}</button>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="p-16 text-center space-y-4 bg-slate-50 rounded-3xl border border-dashed border-slate-200">
+                   <Clock className="h-12 w-12 mx-auto text-slate-300" />
+                   <div className="space-y-1">
+                      <p className="font-bold text-slate-600 italic">No schedules found for this specialist on the selected date.</p>
+                      <p className="text-xs text-slate-400">Please choose another date or another specialist.</p>
+                   </div>
                 </div>
               )}
               <div className="flex gap-6 mt-16 w-full max-w-lg">

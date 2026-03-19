@@ -35,7 +35,7 @@ function App() {
           <Route path="register" element={<RegisterPage />} />
           
           <Route path="book/:doctorId" element={
-            <ProtectedRoute roles={['PATIENT']}>
+            <ProtectedRoute roles={['PATIENT', 'ADMIN', 'DOCTOR']}>
               <BookingPage />
             </ProtectedRoute>
           } />

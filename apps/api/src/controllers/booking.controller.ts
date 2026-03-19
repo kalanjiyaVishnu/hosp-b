@@ -7,13 +7,13 @@ export const createBooking = async (req: any, res: Response) => {
   const patientId = req.user.id;
 
   try {
-    const doctor = await prisma.doctor.findUnique({ where: { id: doctorId } });
+    const doctor = await prisma.doctor.findUnique({ where: { configId: doctorId } });
     if (!doctor) return res.status(404).json({ success: false, message: "Doctor not found" });
 
     const booking = await prisma.booking.create({
       data: {
         patientId,
-        doctorId,
+        doctorId: doctor.id,
         slotDate: new Date(slotDate),
         slotTime,
         reason,
@@ -41,6 +41,7 @@ export const createBooking = async (req: any, res: Response) => {
 
     res.status(201).json({ success: true, data: booking });
   } catch (error) {
+    console.error("Booking creation failed:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };

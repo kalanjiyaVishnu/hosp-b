@@ -18,7 +18,7 @@ export const authenticateToken = async (req: any, res: Response, next: NextFunct
     req.user = user;
     next();
   } catch (err) {
-    return res.status(403).json({ success: false, message: "Forbidden" });
+    return res.status(401).json({ success: false, message: "Unauthorized" });
   }
 };
 

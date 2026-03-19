@@ -2,15 +2,19 @@ import prisma from "../config/db";
 
 export const generateSlots = async (doctorId: string, date: string) => {
   const doctor = await prisma.doctor.findUnique({
-    where: { id: doctorId },
+    where: { configId: doctorId },
   });
 
   if (!doctor) throw new Error("Doctor not found");
 
-  const queryDate = new Date(date);
+  // Parse date string (yyyy-mm-dd) manually to avoid timezone issues
+  const [year, month, day] = date.split("-").map(Number);
+  const queryDate = new Date(year, month - 1, day);
+  
   const dayName = queryDate.toLocaleDateString("en-US", { weekday: "long" });
 
   if (!doctor.availableDays.includes(dayName)) {
+    console.log(`Doctor ${doctorId} not available on ${dayName} (${date})`);
     return [];
   }
 
