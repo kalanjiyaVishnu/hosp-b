@@ -68,7 +68,7 @@ services:
       api:
         condition: service_healthy
     ports:
-      - "80:80"
+      - "4000:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
 

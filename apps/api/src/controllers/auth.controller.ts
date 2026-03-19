@@ -38,10 +38,10 @@ export const login = async (req: Request, res: Response) => {
 
     const accessToken = jwt.sign({ id: user.id, role: user.role }, config.jwtSecret, {
       expiresIn: config.jwtExpiresIn,
-    });
+    } as jwt.SignOptions);
     const refreshToken = jwt.sign({ id: user.id }, config.jwtRefreshSecret, {
       expiresIn: config.jwtRefreshExpiresIn,
-    });
+    } as jwt.SignOptions);
 
     res.json({
       success: true,
@@ -75,7 +75,7 @@ export const refreshToken = async (req: Request, res: Response) => {
 
     const accessToken = jwt.sign({ id: user.id, role: user.role }, config.jwtSecret, {
       expiresIn: config.jwtExpiresIn,
-    });
+    } as jwt.SignOptions);
 
     res.json({ success: true, data: { accessToken } });
   } catch (error) {

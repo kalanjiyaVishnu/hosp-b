@@ -42,7 +42,7 @@ export const generateSlots = async (doctorId: string, date: string) => {
     },
   });
 
-  const bookedTimes = new Set(existingBookings.map((b) => b.slotTime));
+  const bookedTimes = new Set(existingBookings.map((b: { slotTime: string }) => b.slotTime));
 
   while (current < end) {
     const timeString = current.toLocaleTimeString("en-US", {

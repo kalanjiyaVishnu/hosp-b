@@ -1,4 +1,4 @@
-import { PrismaClient, Role, BookingStatus, NotificationType } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import fs from "fs";
 import path from "path";
