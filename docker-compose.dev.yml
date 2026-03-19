@@ -1,0 +1,43 @@
+version: "3.9"
+
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+# This overrides the production build with hot-reload dev servers
+
+services:
+  db:
+    ports:
+      - "5433:5432"
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      target: deps           # use the deps stage, not the compiled runner
+    command: pnpm --filter api dev
+    volumes:
+      - ./apps/api/src:/app/apps/api/src:delegated
+      - ./packages/shared/src:/app/packages/shared/src:delegated
+      - /app/node_modules
+      - /app/apps/api/node_modules
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/hospb?schema=public
+    ports:
+      - "4000:4000"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      target: deps
+    command: pnpm --filter web dev --host 0.0.0.0
+    volumes:
+      - ./apps/web/src:/app/apps/web/src:delegated
+      - ./packages/shared/src:/app/packages/shared/src:delegated
+      - /app/node_modules
+      - /app/apps/web/node_modules
+    environment:
+      VITE_API_URL: http://localhost:4000/api
+      VITE_APP_NAME: MediCare General Hospital
+    ports:
+      - "5173:5173"

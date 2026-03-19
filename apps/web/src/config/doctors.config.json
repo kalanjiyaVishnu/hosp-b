@@ -1,0 +1,30 @@
+{
+  "doctors": [
+    {
+      "id": "dr-001",
+      "name": "Dr. Priya Ramesh",
+      "department": "cardiology",
+      "specialization": "Interventional Cardiology",
+      "experience": 15,
+      "qualifications": ["MBBS", "MD", "DM Cardiology"],
+      "photo": "/assets/doctors/dr-priya.jpg",
+      "availableDays": ["Monday", "Wednesday", "Friday"],
+      "slotDuration": 30,
+      "consultationFee": 800,
+      "bio": "Dr. Priya Ramesh is a renowned cardiologist with over 15 years of experience in interventional cardiology. She has performed over 5000 successful surgeries."
+    },
+    {
+      "id": "dr-002",
+      "name": "Dr. Anish Kumar",
+      "department": "neurology",
+      "specialization": "Neurosurgeon",
+      "experience": 12,
+      "qualifications": ["MBBS", "MS", "MCh Neurosurgery"],
+      "photo": "/assets/doctors/dr-anish.jpg",
+      "availableDays": ["Tuesday", "Thursday", "Saturday"],
+      "slotDuration": 45,
+      "consultationFee": 1000,
+      "bio": "Dr. Anish Kumar specializes in complex brain and spine surgeries with a focus on minimally invasive techniques."
+    }
+  ]
+}

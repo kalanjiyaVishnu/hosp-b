@@ -1,0 +1,30 @@
+{
+  "name": "hospital-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:all": "pnpm -r dev --parallel",
+    "dev:db": "docker compose up -d db",
+    "dev:api": "pnpm --filter api dev",
+    "dev:web": "pnpm --filter web dev",
+    "build": "turbo run build",
+    "db:migrate": "pnpm --filter api prisma migrate dev",
+    "db:generate": "pnpm --filter api prisma generate",
+    "db:seed": "pnpm --filter api prisma db seed",
+    "install:all": "pnpm install",
+    "docker:dev": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "docker:prod": "docker compose up --build -d",
+    "docker:down": "docker compose down",
+    "docker:down:volumes": "docker compose down -v",
+    "docker:logs": "docker compose logs -f",
+    "docker:logs:api": "docker compose logs -f api",
+    "docker:seed": "docker compose exec api node -e \"require('./dist/prisma/seed')\"",
+    "docker:migrate": "docker compose exec api npx prisma migrate deploy",
+    "docker:studio": "docker compose exec api npx prisma studio"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.15",
+    "typescript": "^5.2.2"
+  },
+  "packageManager": "pnpm@8.15.4"
+}

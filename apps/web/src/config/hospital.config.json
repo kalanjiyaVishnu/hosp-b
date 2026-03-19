@@ -1,0 +1,94 @@
+{
+  "name": "MediCare General Hospital",
+  "tagline": "Compassionate Care, Advanced Medicine",
+  "established": 1998,
+  "logo": "/assets/logo.svg",
+  "address": {
+    "street": "42 Wellness Avenue",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "zip": "600001",
+    "country": "India"
+  },
+  "contact": {
+    "phone": "+91-44-2345-6789",
+    "emergency": "108",
+    "email": "info@medicare-hospital.com"
+  },
+  "socialLinks": {
+    "facebook": "https://facebook.com/medicare",
+    "twitter": "https://twitter.com/medicare",
+    "instagram": "https://instagram.com/medicare"
+  },
+  "departments": [
+    {
+      "id": "cardiology",
+      "name": "Cardiology",
+      "icon": "Heart",
+      "description": "Expert heart care and advanced cardiac surgery."
+    },
+    {
+      "id": "neurology",
+      "name": "Neurology",
+      "icon": "Brain",
+      "description": "Comprehensive care for brain and nervous system disorders."
+    },
+    {
+      "id": "orthopedics",
+      "name": "Orthopedics",
+      "icon": "Bone",
+      "description": "Specialized treatment for bone and joint conditions."
+    },
+    {
+      "id": "pediatrics",
+      "name": "Pediatrics",
+      "icon": "Baby",
+      "description": "Gentle and professional care for children."
+    },
+    {
+      "id": "oncology",
+      "name": "Oncology",
+      "icon": "Microscope",
+      "description": "Leading-edge cancer diagnosis and treatment."
+    },
+    {
+      "id": "general",
+      "name": "General Medicine",
+      "icon": "Stethoscope",
+      "description": "Primary healthcare for all your medical needs."
+    }
+  ],
+  "stats": [
+    { "label": "Patients Treated", "value": "50,000+" },
+    { "label": "Expert Doctors", "value": "120+" },
+    { "label": "Years of Service", "value": "25+" },
+    { "label": "Beds Available", "value": "500+" }
+  ],
+  "facilities": [
+    "ICU",
+    "24/7 Emergency",
+    "MRI & CT Scan",
+    "Blood Bank",
+    "Pharmacy",
+    "Ambulance"
+  ],
+  "workingHours": {
+    "weekdays": "8:00 AM – 8:00 PM",
+    "saturday": "8:00 AM – 5:00 PM",
+    "sunday": "Emergency Only"
+  },
+  "testimonials": [
+    {
+      "name": "John Doe",
+      "role": "Patient",
+      "comment": "Exceptional care and professional staff.",
+      "rating": 5
+    },
+    {
+      "name": "Sarah Smith",
+      "role": "Patient",
+      "comment": "The best hospital in the city. Highly recommended.",
+      "rating": 5
+    }
+  ]
+}
